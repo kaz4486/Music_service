@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: $background-color;
+  font-family: $font-text;
+  font-size: 14px;
+  line-height: 1.7;
+  font-weight: $font-light;
+  color: $color-titles;
+}
+
+/*.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+}*/

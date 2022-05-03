@@ -1,6 +1,7 @@
-@import './bootstrap';
-@import './global';
+@import './variables';
+
 @import './layout';
 @import './normalize';
 @import './typography';
-@import './variables';
+@import './global';
+@import './pages/home';

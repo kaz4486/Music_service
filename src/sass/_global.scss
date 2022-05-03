@@ -1,21 +1,72 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+// style uniwersalne dla różnych podstron
 
-body {
-  margin: 0;
-  background: $background-color;
+.header__wrapper {
+  width: 100%;
+  height: 90vh;
+  background: linear-gradient(rgba(19, 19, 19, 0.1), rgba(182, 168, 168, 0.151)),
+    url('../images/background.jpg');
+  background-color: rgba(0, 0, 0, 0.5);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  box-shadow: inset 0px -160px 152px -6px rgba(19, 19, 19, 1);
+}
+.titles-box {
+  text-align: center;
+  position: absolute;
+  top: 51%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+}
+/*.page_subtitle-box {
+  text-align: center;
+  position: absolute;
+  top: 51%;
+  left: 51.5%;
+  transform: translate(-50%, -50%);
+}*/
+
+header h1 {
   font-family: $font-text;
-  font-size: 14px;
-  line-height: 1.7;
-  font-weight: $font-normal;
-  color: $color-subtitles;
+  font-weight: $font-ultrabold;
+  font-size: 110px;
+  letter-spacing: 70px;
+  text-transform: uppercase;
+  margin: -29px;
+  padding: 0;
+  text-shadow: 0 0.5px 1px rgba(0, 0, 0, 1);
 }
 
-.container {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0 20px;
+header h2 {
+  font-family: $font-text;
+  font-weight: $font-bold;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 3px;
+  position: relative;
+  left: -31px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  a {
+    margin: 100px 40px;
+    text-decoration: none;
+    font-family: $font-text;
+    font-weight: $font-semibold;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: $color-titles;
+    letter-spacing: 0.5px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
