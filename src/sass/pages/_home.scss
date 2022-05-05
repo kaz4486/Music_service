@@ -25,6 +25,11 @@
     letter-spacing: 15px;
     margin-left: 12px;
   }
+  .button {
+    top: 214px;
+    left: 30px;
+    position: relative;
+  }
   .btn {
     text-decoration: none;
     border: 1px solid $color-main;
@@ -46,6 +51,8 @@
   position: relative;
   left: 58.5%;
   top: -16%;
+  max-width: 492px;
+  max-height: 1400px;
   img {
     width: 335px;
     height: 45vh;
@@ -54,7 +61,7 @@
   .artist-name {
     color: $color-main;
     position: absolute;
-    left: -12.5%;
+    left: -33.5%;
     top: 49%;
     font-size: 60px;
     letter-spacing: 16px;
@@ -84,24 +91,24 @@
 
 .subscribers-info {
   position: absolute;
-  left: 46%;
-  top: 197%;
+  left: -22%;
+  top: 100%;
   line-height: 0.5;
   text-align: end;
+  font-size: 25px;
+  letter-spacing: 4.5px;
   h4 {
     color: $color-subtitles;
     text-transform: uppercase;
-    letter-spacing: 4px;
+
     font-family: $font-text;
     font-weight: $font-bold;
-    font-size: 25px;
   }
   p {
     color: $color-titles;
     font-family: $font-text;
     font-weight: $font-semibold;
-    letter-spacing: 6px;
-    font-size: 26px;
+
     word-spacing: 5px;
   }
 }
@@ -110,4 +117,102 @@
   text-align: center;
   letter-spacing: 2px;
   color: $color-subtitles;
+}
+
+/* media */
+
+@media (max-width: 767px) {
+  .subscribe-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .btn {
+      top: 0;
+      left: 0;
+    }
+    .subscribe-title {
+      top: -152px;
+    }
+    .button {
+      height: 20vh;
+      top: -95px;
+      position: relative;
+      left: 0;
+    }
+  }
+
+  .artist {
+    max-width: 800px;
+    max-height: 800px;
+    top: -118px;
+    left: 0;
+
+    .artist-name {
+      font-size: 41px;
+      letter-spacing: 7px;
+      left: -101px;
+    }
+    img {
+      width: 200px;
+      height: 27vh;
+    }
+    .subscribers-info {
+      font-size: 21px;
+      text-align: center;
+      line-height: 0.8;
+      h4 {
+        color: $color-titles;
+        font-size: 25px;
+        margin-bottom: 2px;
+      }
+      p {
+        color: $color-main;
+      }
+    }
+  }
+
+  .page-title {
+    font-size: 55px;
+    margin-bottom: 20px;
+    letter-spacing: 40px;
+  }
+  .subscribe-title h1 {
+    font-size: 40px;
+    letter-spacing: 8px;
+  }
+  .subscribe-title h2 {
+    font-size: 40px;
+    letter-spacing: 8px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .subscribe-box .btn {
+    font-size: 22px;
+    padding: 26px 26px;
+  }
+
+  .artist {
+    max-width: 257px;
+    max-height: 1000px;
+    top: -10%;
+    left: 65%;
+    img {
+      width: 250px;
+      height: 35vh;
+    }
+    .artist-name {
+      font-size: 45px;
+      letter-spacing: 10px;
+      left: -46%;
+    }
+    .subscribers-info {
+      left: -19%;
+      font-size: 22px;
+      line-height: 1;
+      margin-right: 20px;
+    }
+  }
 }
