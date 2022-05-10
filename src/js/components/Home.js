@@ -2,19 +2,21 @@ import { templates, select } from '../settings.js';
 //import Player from './Player.js';
 
 class Home {
-  constructor(element, data) {
+  constructor(element, dataSongs, dataAuthors) {
     const thisHome = this;
-    thisHome.initData(data);
-    thisHome.render(element, data);
+    //thisHome.initData(dataSongs, dataAuthors);
+    thisHome.render(element, dataSongs, dataAuthors);
+
     //thisHome.initWidgets(thisHome.dom.players, data);
   }
 
-  initData(data) {
+  /*initData(dataSongs, dataAuthors) {
     const thisHome = this;
 
-    thisHome.data = data;
-  }
-  render(element, songs) {
+    /*thisHome.data.songs = dataSongs;
+    thisHome.data.authors = dataAuthors;*
+  }*/
+  render(element, songs, authors) {
     const thisHome = this;
 
     thisHome.dom = {};
@@ -27,16 +29,19 @@ class Home {
       const songCategories = song.categories;
       const songRanking = song.ranking;
       const songFileName = song.filename;
-      const songFileNameLowerCase = songFileName.toLowerCase();
+      //const songFileNameLowerCase = songFileName.toLowerCase();
 
       // get author
-      const nameSongAndAuthor = songFileNameLowerCase
+      /*const nameSongAndAuthor = songFileNameLowerCase
         .replaceAll('_', ' ')
         .replace('-', '')
-        .replace('.mp3', '');
+        .replace('.mp3', '');*/
 
-      const songAuthor = nameSongAndAuthor.replace(songTitle, '').trim();
-      // const songAuthor = authors.find(author => author.id === song.author).fullName
+      //const songAuthor = nameSongAndAuthor.replace(songTitle, '').trim();
+      const songAuthor = authors.find(
+        (author) => author.id === song.author
+      ).fullName;
+
       console.log(songAuthor);
 
       const songData = {
@@ -61,9 +66,13 @@ class Home {
 
     thisHome.pages = document.querySelector(select.containerOf.pages).children;
     thisHome.navLinks = document.querySelectorAll(select.nav.links);
+    thisHome.navLinksContainer = document.querySelector(
+      select.containerOf.navLinks
+    );
 
     const idFromHash = window.location.hash.replace('#', '');
 
+    //początek metody
     let pageMatchingHash = thisHome.pages[0].id;
 
     for (let page of thisHome.pages) {
@@ -75,11 +84,35 @@ class Home {
     }
 
     thisHome.activatePage(pageMatchingHash);
+    //koniec ; argument = event.target.value
 
     /*thisHome.dom.players = thisHome.dom.wrapper.querySelectorAll(
       select.home.players
     );
     console.log(thisHome.dom.players);*/
+    thisHome.navLinksContainer.addEventListener('click', function (event) {
+      console.log(event);
+      event.preventDefault();
+      thisHome.initPages(event);
+    });
+  }
+
+  initPages(event) {
+    const thisHome = this;
+
+    let pageMatchingHash = thisHome.pages[0].id;
+
+    const idFromHash = event.target.hash.replace('#', '');
+
+    for (let page of thisHome.pages) {
+      console.log({ page });
+      if (page.id == idFromHash) {
+        pageMatchingHash = page.id;
+        break;
+      }
+    }
+
+    thisHome.activatePage(pageMatchingHash);
   }
 
   activatePage(pageId) {

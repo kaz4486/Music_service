@@ -5,6 +5,7 @@ export const settings = {
       window.location.hostname +
       (window.location.hostname == 'localhost' ? ':3131' : ''),
     songs: 'songs',
+    authors: 'authors',
   },
 };
 
@@ -12,6 +13,7 @@ export const select = {
   containerOf: {
     songBox: '.songs-box',
     pages: '.pages',
+    navLinks: '.nav',
   },
   templateOf: {
     player: '#template-player',

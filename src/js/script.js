@@ -6,9 +6,13 @@ const app = {
     const thisApp = this;
 
     thisApp.data = {};
-    const url = settings.db.url + '/' + settings.db.songs;
+    const urlSongs = settings.db.url + '/' + settings.db.songs;
+    const urlAuthors = settings.db.url + '/' + settings.db.authors;
 
-    fetch(url)
+    //const fetchPromise1 = fetch(urlSongs);
+    //const fetchPromise2 = fetch(urlAuthors);
+
+    fetch(urlSongs)
       .then(function (rawResponse) {
         return rawResponse.json();
       })
@@ -21,8 +25,25 @@ const app = {
         // const songsObject = Object.assign({}, [thisApp.data.songs]);
 
         // execute initHome method
-        thisApp.initHome(thisApp.data.songs);
+        //thisApp.initHome(thisApp.data.songs);
       });
+
+    fetch(urlAuthors)
+      .then(function (rawResponse) {
+        return rawResponse.json();
+      })
+      .then(function (parsedResponse) {
+        console.log('parsedResponse:', parsedResponse);
+
+        // save parsedResponse as a thisApp.data.songs
+        thisApp.data.authors = parsedResponse;
+
+        // const songsObject = Object.assign({}, [thisApp.data.songs]);
+
+        // execute initHome method
+        thisApp.initHome(thisApp.data.songs, thisApp.data.authors);
+      });
+
     console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
   init: function () {
@@ -33,11 +54,11 @@ const app = {
     thisApp.initData();
   },
 
-  initHome(data) {
+  initHome(dataSongs, dataAuthors) {
     const thisApp = this;
 
     const songContainer = document.querySelector(select.containerOf.songBox);
-    thisApp.home = new Home(songContainer, data);
+    thisApp.home = new Home(songContainer, dataSongs, dataAuthors);
   },
 };
 
