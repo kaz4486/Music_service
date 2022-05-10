@@ -72,7 +72,6 @@ class Home {
 
     const idFromHash = window.location.hash.replace('#', '');
 
-    //początek metody
     let pageMatchingHash = thisHome.pages[0].id;
 
     for (let page of thisHome.pages) {
@@ -84,29 +83,31 @@ class Home {
     }
 
     thisHome.activatePage(pageMatchingHash);
-    //koniec ; argument = event.target.value
 
-    /*thisHome.dom.players = thisHome.dom.wrapper.querySelectorAll(
-      select.home.players
-    );
-    console.log(thisHome.dom.players);*/
-    thisHome.navLinksContainer.addEventListener('click', function (event) {
-      console.log(event);
-      event.preventDefault();
-      thisHome.initPages(event);
-    });
+    for (let link of thisHome.navLinks) {
+      link.addEventListener('click', function (event) {
+        const clickedLink = this;
+        console.log(event);
+        event.preventDefault();
+
+        /* get page id from href attribute */
+        const pageId = clickedLink.getAttribute('href').replace('#', '');
+        thisHome.initPages(pageId);
+
+        /* change URL hash */
+        window.location.hash = '#/' + pageId;
+      });
+    }
   }
 
-  initPages(event) {
+  initPages(pageId) {
     const thisHome = this;
 
     let pageMatchingHash = thisHome.pages[0].id;
 
-    const idFromHash = event.target.hash.replace('#', '');
-
     for (let page of thisHome.pages) {
       console.log({ page });
-      if (page.id == idFromHash) {
+      if (page.id == pageId) {
         pageMatchingHash = page.id;
         break;
       }
