@@ -11,7 +11,11 @@
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css"
+    />
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -29,107 +33,82 @@
           </div>
         </div>
         <div class="nav">
-            <a href="#home">home</a>
-            <a href="#search">search</a>
-            <a href="#discover">discover</a>
-          </div>
+          <a href="#home">home</a>
+          <a href="#search">search</a>
+          <a href="#discover">discover</a>
         </div>
       </div>
     </header>
 
-    <section class="home">
+    <div class="pages">
+      <section id="home">
+        <div class="home-wrapper container">xyz</div>
+      </section>
+      <section id="search">
+        <div id="search-wrapper container">search</div>
+      </section>
+      <section id="discover">
+        <div class="discover-wrapper container">discover</div>
+      </section>
+
+      <section id="home">
         <div class="section-home container">
-            <div class="song container">
-                <h3></h3>
-                <div class="gap">
-                    <audio>
-                        <source src="./audio/At_The_Top_David_Renda.mp3" type="audio/mpeg">
-                    </audio>
+          <div class="songs-box container">
+            <script id="template-player" type="text/x-handlebars-template">
+              <div class='song container'>
+                <h3 class='song-name'>{{songTitle}} - {{songAuthor}}</h3>
+                <div class='player'>
+                  <audio>
+                    <source src='./audio/{{songFileName}}' type='audio/mpeg' />
+                  </audio>
                 </div>
-                <div class="row">
-                    <p></p>
-                    <p></p>
+                <div class='row song-description'>
+                  <p>Categories: {{songCategories}}</p>
+                  <p>#{{songRanking}} in the ranking</p>
                 </div>
-            </div>
-            <div class="song container">
-                <h3></h3>
-                <div class="gap">
-                    <audio>
-                        <source src="./audio/BASS_TRAP_Steve_Oxen.mp3" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="row">
-                    <p></p>
-                    <p></p>
-                </div>
-            </div>
-            <div class="song container">
-                <h3></h3>
-                <div class="gap">
-                    <audio>
-                        <source src="./audio/Silly_Feet_David_Renda.mp3" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="row">
-                    <p></p>
-                    <p></p>
-                </div>
-            </div>
-            <div class="song container">
-                <h3></h3>
-                <div class="gap">
-                    <audio>
-                        <source src="./audio/Western_Adventures_-_David_Fesliyan.mp3" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="row">
-                    <p></p>
-                    <p></p>
-                </div>
-            </div>
+              </div>
+            </script>
+          </div>
 
-            <div class="subscribe-box">
-                <div class="row subscribe-title">
-                    <h1>subscribe</h1>
-                    <h2>now</h2>
-                </div>
-                <div class="button">
-                    <a href="#/join-now" class="btn">Join now</a>
-                </div>
-                <div class="artist">
-                    <img src="./images/artist.jpg">
-                    <div class="artist-name">
-                        <div class="first-line">
-                            <h3 class="artist__first-color">Dean</h3>
-                        </div>
-                        <div class="second-line">
-                            <h3 class="artist__first-color">Hen</h3>
-                            <h3 class="artist__second-color">son</h3>
-                        </div>
-                    </div>
-                    <div class="subscribers-info">
-                        <h4>New album</h4>
-                        <p>Available only for subscribers</p>
-                    </div>
-                </div>
-
+          <div class="subscribe-box">
+            <div class="row subscribe-title">
+              <h1>subscribe</h1>
+              <h2>now</h2>
             </div>
-
-            <div class="footer">
-                <p>All rights reserved</p>
+            <div class="button">
+              <a href="#/join-now" class="btn">Join now</a>
             </div>
+            <div class="artist">
+              <img src="./images/artist.jpg" />
+              <div class="artist-name">
+                <div class="first-line">
+                  <h3 class="artist__first-color">Dean</h3>
+                </div>
+                <div class="second-line">
+                  <h3 class="artist__first-color">Hen</h3>
+                  <h3 class="artist__second-color">son</h3>
+                </div>
+              </div>
+              <div class="subscribers-info">
+                <h4>New album</h4>
+                <p>Available only for subscribers</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer">
+            <p>All rights reserved</p>
+          </div>
         </div>
+      </section>
 
-
-    </section>
-    
-
-        
-    
-
+      <section id="search">
+        <h1>adasdsa</h1>
+      </section>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js" type="module"></script>
   </body>
 </html>

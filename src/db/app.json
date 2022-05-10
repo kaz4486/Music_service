@@ -32,5 +32,19 @@
             "categories": ["Powerful", "Insomnia"],
             "ranking": 3
         }
+    ],
+    "authors" : [
+        {"id": 1,
+        "fullName": "David Renda"
+        },
+        {"id": 2,
+        "fullName": "David Fesliyan"
+        },
+        {"id":3,
+        "fullName": "Steve Oxen"
+        }
+
     ]
+    
+    
 }
