@@ -42,16 +42,6 @@
 
     <div class="pages">
       <section id="home">
-        <div class="home-wrapper container"></div>
-      </section>
-      <section id="search">
-        <div id="search-wrapper container"></div>
-      </section>
-      <section id="discover">
-        <div class="discover-wrapper container">discover</div>
-      </section>
-
-      <section id="home">
         <div class="section-home container">
           <div class="songs-box container">
             <script id="template-player" type="text/x-handlebars-template">
@@ -79,7 +69,7 @@
               <a href="#/join-now" class="btn">Join now</a>
             </div>
             <div class="artist">
-              <img src="./images/artist.jpg" />
+              <img src="./images/artist.jpg" alt="Artist" />
               <div class="artist-name">
                 <div class="first-line">
                   <h3 class="artist__first-color">Dean</h3>
@@ -103,12 +93,12 @@
       </section>
 
       <section id="search">
-        <div class="search-box">
+        <div class="search-box container">
           <label for="song-search">search</label>
           <div class="row">
             <h1>name</h1>
             <input type="search" class="song-search" name="q" />
-            <button class="search-button">search</button>
+            <button class="search-button" type="button">search</button>
           </div>
         </div>
       </section>

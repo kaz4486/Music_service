@@ -1,0 +1,25 @@
+.search-box {
+  text-align: center;
+
+  label {
+    font-family: $font-text;
+    letter-spacing: 7px;
+    color: $color-subtitles;
+    font-size: 40px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: $font-text;
+    letter-spacing: 3px;
+    color: $color-subtitles;
+    font-size: 20px;
+    text-transform: capitalize;
+    padding-right: 10px;
+  }
+
+  input {
+    border-radius: 5%;
+    box-sizing: border-box;
+  }
+}
