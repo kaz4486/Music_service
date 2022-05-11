@@ -14,6 +14,7 @@ export const select = {
     songBox: '.songs-box',
     pages: '.pages',
     navLinks: '.nav',
+    searchBox: '.search-box',
   },
   templateOf: {
     player: '#template-player',
@@ -23,6 +24,10 @@ export const select = {
   },
   nav: {
     links: '.nav a',
+  },
+  search: {
+    button: '.search-button',
+    input: '.song-search',
   },
 };
 

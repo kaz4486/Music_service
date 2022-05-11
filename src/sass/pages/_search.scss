@@ -7,19 +7,37 @@
     color: $color-subtitles;
     font-size: 40px;
     text-transform: uppercase;
+    font-weight: $font-semibold;
   }
 
   h1 {
     font-family: $font-text;
     letter-spacing: 3px;
     color: $color-subtitles;
-    font-size: 20px;
+    font-size: 22px;
     text-transform: capitalize;
-    padding-right: 10px;
+    font-weight: $font-semibold;
   }
 
   input {
-    border-radius: 5%;
+    border-radius: 8px;
+    border: solid 1.5px #d3d3d3;
     box-sizing: border-box;
+    margin: 0 30px;
+    width: 320px;
+    height: 45px;
+  }
+
+  button {
+    height: 45px;
+    width: 100px;
+    border-radius: 8px;
+    border: solid 1.5px $color-main;
+    color: $color-titles;
+    background-color: $color-main;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 15px;
+    font-weight: $font-semibold;
   }
 }

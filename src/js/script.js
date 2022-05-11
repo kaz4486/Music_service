@@ -1,5 +1,6 @@
 import { settings, select } from './settings.js';
 import Home from './components/Home.js';
+import Search from './components/Search.js';
 
 const app = {
   initData: function () {
@@ -42,6 +43,7 @@ const app = {
 
         // execute initHome method
         thisApp.initHome(thisApp.data.songs, thisApp.data.authors);
+        thisApp.initSearch(thisApp.data.authors);
       });
 
     console.log('thisApp.data', JSON.stringify(thisApp.data));
@@ -59,6 +61,14 @@ const app = {
 
     const songContainer = document.querySelector(select.containerOf.songBox);
     thisApp.home = new Home(songContainer, dataSongs, dataAuthors);
+  },
+  initSearch(dataSongs) {
+    const thisApp = this;
+
+    const searchContainer = document.querySelector(
+      select.containerOf.searchBox
+    );
+    thisApp.search = new Search(searchContainer, dataSongs);
   },
 };
 
