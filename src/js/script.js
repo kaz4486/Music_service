@@ -3,6 +3,56 @@ import Home from './components/Home.js';
 import Search from './components/Search.js';
 
 const app = {
+  initPages: function () {
+    const thisApp = this;
+
+    thisApp.pages = document.querySelector(select.containerOf.pages).children;
+    thisApp.navLinks = document.querySelectorAll(select.nav.links);
+
+    const idFromHash = window.location.hash.replace('#/', '');
+
+    let pageMatchingHash = thisApp.pages[0].id;
+
+    for (let page of thisApp.pages) {
+      if (page.id == idFromHash) {
+        pageMatchingHash = page.id;
+        break;
+      }
+    }
+
+    thisApp.activatePage(pageMatchingHash);
+    for (let link of thisApp.navLinks) {
+      link.addEventListener('click', function (event) {
+        const clickedElement = this;
+        event.preventDefault();
+
+        /* get page id from href attribute */
+        const id = clickedElement.getAttribute('href').replace('#', '');
+
+        /* run this.App.activatePage with that id */
+        thisApp.activatePage(id);
+
+        /* change URL hash */
+        window.location.hash = '#/' + id;
+      });
+    }
+  },
+  activatePage: function (pageId) {
+    const thisApp = this;
+
+    /* add class 'active to matching pages, remove from non-matching */
+    for (let page of thisApp.pages) {
+      page.classList.toggle('active', page.id == pageId);
+    }
+
+    /* add class 'active to matching links, remove from non-matching */
+    for (let link of thisApp.navLinks) {
+      link.classList.toggle(
+        'active',
+        link.getAttribute('href') == '#' + pageId
+      );
+    }
+  },
   initData: function () {
     const thisApp = this;
 
@@ -53,6 +103,7 @@ const app = {
     console.log('*** App starting ***');
     console.log('thisApp:', thisApp);
 
+    thisApp.initPages();
     thisApp.initData();
   },
 
@@ -62,13 +113,13 @@ const app = {
     const songContainer = document.querySelector(select.containerOf.songBox);
     thisApp.home = new Home(songContainer, dataSongs, dataAuthors);
   },
-  initSearch(dataSongs) {
+  initSearch(authors) {
     const thisApp = this;
 
     const searchContainer = document.querySelector(
       select.containerOf.searchBox
     );
-    thisApp.search = new Search(searchContainer, dataSongs);
+    thisApp.search = new Search(searchContainer, authors);
   },
 };
 

@@ -33,13 +33,14 @@ class Search {
   initWidget(element, authors) {
     const thisSearch = this;
 
-    /*thisSearch.dom = {};
-    thisSearch.dom.wrapper = element;*/
+    thisSearch.dom = {};
+    thisSearch.dom.wrapper = element;
 
-    const searchButton = document.querySelector(select.search.button);
-    console.log(searchButton);
+    thisSearch.dom.searchButton = element.querySelector(select.search.button);
+    console.log(thisSearch.dom.searchButton);
 
-    searchButton.addEventListener('click', function () {
+    thisSearch.dom.searchButton.addEventListener('click', function (event) {
+      event.preventDefault();
       const inputElement = document.querySelector(select.search.input);
       const inputText = inputElement.value;
       console.log(inputText);

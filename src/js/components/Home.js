@@ -1,4 +1,4 @@
-import { templates, select } from '../settings.js';
+import { templates } from '../settings.js';
 //import Player from './Player.js';
 
 class Home {
@@ -64,7 +64,7 @@ class Home {
       stopOthersOnPlay: true,
     });
 
-    thisHome.pages = document.querySelector(select.containerOf.pages).children;
+    /*thisHome.pages = document.querySelector(select.containerOf.pages).children;
     thisHome.navLinks = document.querySelectorAll(select.nav.links);
     thisHome.navLinksContainer = document.querySelector(
       select.containerOf.navLinks
@@ -90,11 +90,11 @@ class Home {
         console.log(event);
         event.preventDefault();
 
-        /* get page id from href attribute */
+        // get page id from href attribute 
         const pageId = clickedLink.getAttribute('href').replace('#', '');
         thisHome.initPages(pageId);
 
-        /* change URL hash */
+        // change URL hash 
         window.location.hash = '#/' + pageId;
       });
     }
@@ -123,14 +123,15 @@ class Home {
     for (let page of thisHome.pages) {
       page.classList.toggle('active', page.id == pageId);
     }
-  }
-  /*initWidgets(elements) {
+  }*/
+    /*initWidgets(elements) {
     const thisHome = this;
 
     for (let element of elements) {
       thisHome.player = new Player(element);
     }
   }*/
+  }
 }
 
 export default Home;
