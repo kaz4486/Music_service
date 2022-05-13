@@ -12,7 +12,7 @@ class Search {
 
     thisSearch.data = {};
 
-    const urlSearchedSongs =
+    let urlSearchedSongs =
       settings.db.url + '/' + settings.db.songs + '?q=' + inputText;
 
     fetch(urlSearchedSongs)
@@ -20,11 +20,11 @@ class Search {
         return rawResponse.json();
       })
       .then(function (parsedResponse) {
-        console.log('parsedResponse:', parsedResponse);
+        //console.log('parsedResponse:', parsedResponse);
 
         // save parsedResponse as a thisApp.data.songs
         thisSearch.data.searchedSongs = parsedResponse;
-        console.log(thisSearch.data.searchedSongs);
+        //console.log(thisSearch.data.searchedSongs);
 
         thisSearch.updateDOM(thisSearch.data.searchedSongs, element, authors);
       });
@@ -37,11 +37,15 @@ class Search {
     thisSearch.dom.wrapper = element;
 
     thisSearch.dom.searchButton = element.querySelector(select.search.button);
-    console.log(thisSearch.dom.searchButton);
+    //console.log(thisSearch.dom.searchButton);
+
+    const inputElement = document.querySelector(select.search.input);
+    console.log(inputElement);
 
     thisSearch.dom.searchButton.addEventListener('click', function (event) {
+      console.log('clicked');
       event.preventDefault();
-      const inputElement = document.querySelector(select.search.input);
+
       const inputText = inputElement.value;
       console.log(inputText);
       thisSearch.initData(inputText, element, authors);
@@ -54,7 +58,12 @@ class Search {
 
     thisSearch.dom = {};
 
+    //thisSearch.dom.wrapper = element;
+
     thisSearch.dom.songWrapper = element;
+
+    console.log(thisSearch.dom.songWrapper);
+    console.log(element);
 
     for (let song of searchedSongs) {
       const songId = song.id;
@@ -70,7 +79,7 @@ class Search {
 
       console.log(songAuthor);
 
-      const songData = {
+      let songData = {
         songId,
         songTitle,
         songAuthor,
@@ -78,7 +87,7 @@ class Search {
         songRanking,
         songFileName,
       };
-      console.log(songData);
+      //console.log(songData);
       const generatedHTML = templates.player(songData);
 
       thisSearch.dom.songWrapper.innerHTML += generatedHTML;

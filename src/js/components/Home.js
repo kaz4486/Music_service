@@ -63,41 +63,6 @@ class Home {
       selector: '.player', // inits Green Audio Player on each audio container that has class "player"
       stopOthersOnPlay: true,
     });
-
-    /*thisHome.pages = document.querySelector(select.containerOf.pages).children;
-    thisHome.navLinks = document.querySelectorAll(select.nav.links);
-    thisHome.navLinksContainer = document.querySelector(
-      select.containerOf.navLinks
-    );
-
-    const idFromHash = window.location.hash.replace('#', '');
-
-    let pageMatchingHash = thisHome.pages[0].id;
-
-    for (let page of thisHome.pages) {
-      console.log({ page });
-      if (page.id == idFromHash) {
-        pageMatchingHash = page.id;
-        break;
-      }
-    }
-
-    thisHome.activatePage(pageMatchingHash);
-
-    for (let link of thisHome.navLinks) {
-      link.addEventListener('click', function (event) {
-        const clickedLink = this;
-        console.log(event);
-        event.preventDefault();
-
-        // get page id from href attribute 
-        const pageId = clickedLink.getAttribute('href').replace('#', '');
-        thisHome.initPages(pageId);
-
-        // change URL hash 
-        window.location.hash = '#/' + pageId;
-      });
-    }
   }
 
   initPages(pageId) {
@@ -114,23 +79,6 @@ class Home {
     }
 
     thisHome.activatePage(pageMatchingHash);
-  }
-
-  activatePage(pageId) {
-    const thisHome = this;
-
-    // add class 'active to matching pages, remove from non-matching
-    for (let page of thisHome.pages) {
-      page.classList.toggle('active', page.id == pageId);
-    }
-  }*/
-    /*initWidgets(elements) {
-    const thisHome = this;
-
-    for (let element of elements) {
-      thisHome.player = new Player(element);
-    }
-  }*/
   }
 }
 

@@ -120,6 +120,9 @@ const app = {
       select.containerOf.searchBox
     );
     thisApp.search = new Search(searchContainer, authors);
+
+    /*const songContainer = document.querySelector(select.containerOf.songBox);
+    thisApp.search = new Search(songContainer, authors);*/
   },
 };
 

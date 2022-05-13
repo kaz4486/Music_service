@@ -17,7 +17,7 @@ export const select = {
     searchBox: '.search-box',
   },
   templateOf: {
-    player: '#template-player',
+    player: '.template-player',
   },
   home: {
     players: '.player',

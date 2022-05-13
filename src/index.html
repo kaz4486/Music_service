@@ -44,7 +44,7 @@
       <section id="home">
         <div class="section-home container">
           <div class="songs-box container">
-            <script id="template-player" type="text/x-handlebars-template">
+            <script class="template-player" type="text/x-handlebars-template">
               <div class='song container'>
                 <h3 class='song-name'>{{songTitle}} - {{songAuthor}}</h3>
                 <div class='player'>
@@ -99,6 +99,25 @@
             <h1>name</h1>
             <input type="search" class="song-search" name="q" />
             <button class="search-button" type="button">search</button>
+          </div>
+
+          <!--player-->
+
+          <div class="songs-box container">
+            <script class="template-player" type="text/x-handlebars-template">
+              <div class='song container'>
+                <h3 class='song-name'>{{songTitle}} - {{songAuthor}}</h3>
+                <div class='player'>
+                  <audio>
+                    <source src='./audio/{{songFileName}}' type='audio/mpeg' />
+                  </audio>
+                </div>
+                <div class='row song-description'>
+                  <p>Categories: {{songCategories}}</p>
+                  <p>#{{songRanking}} in the ranking</p>
+                </div>
+              </div>
+            </script>
           </div>
         </div>
       </section>
