@@ -24,7 +24,7 @@ class Home {
 
     for (let song of songs) {
       const songId = song.id;
-      console.log(songId);
+      //console.log(songId);
       const songTitle = song.title;
       const songCategories = song.categories;
       const songRanking = song.ranking;
@@ -42,7 +42,7 @@ class Home {
         (author) => author.id === song.author
       ).fullName;
 
-      console.log(songAuthor);
+      //console.log(songAuthor);
 
       const songData = {
         songId,
@@ -56,7 +56,7 @@ class Home {
       const generatedHTML = templates.player(songData);
 
       thisHome.dom.songWrapper.innerHTML += generatedHTML;
-      console.log(thisHome.dom.songWrapper.innerHTML);
+      //console.log(thisHome.dom.songWrapper.innerHTML);
     }
 
     GreenAudioPlayer.init({
@@ -71,7 +71,7 @@ class Home {
     let pageMatchingHash = thisHome.pages[0].id;
 
     for (let page of thisHome.pages) {
-      console.log({ page });
+      //console.log({ page });
       if (page.id == pageId) {
         pageMatchingHash = page.id;
         break;

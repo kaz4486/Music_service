@@ -18,6 +18,7 @@ export const select = {
   },
   templateOf: {
     player: '.template-player',
+    songNumber: '.template-song_number',
   },
   home: {
     players: '.player',
@@ -29,11 +30,15 @@ export const select = {
     button: '.search-button',
     input: '.song-searcher',
     searchedSongs: '.songs-searched',
+    foundText: '.found-text',
   },
 };
 
 export const templates = {
   player: Handlebars.compile(
     document.querySelector(select.templateOf.player).innerHTML
+  ),
+  songNumber: Handlebars.compile(
+    document.querySelector(select.templateOf.songNumber).innerHTML
   ),
 };

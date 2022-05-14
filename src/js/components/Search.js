@@ -18,17 +18,22 @@ class Search {
       select.search.searchedSongs
     );
 
+    thisSearch.dom.foundText = element.querySelector(select.search.foundText);
+    console.log(thisSearch.dom.foundText);
+
     thisSearch.dom.searchButton = element.querySelector(select.search.button);
     //console.log(thisSearch.dom.searchButton);
 
-    thisSearch.dom.inputElement = document.querySelector(select.search.input);
-    console.log(thisSearch.dom.inputElement);
+    thisSearch.dom.inputElement = element.querySelector(select.search.input);
+    //console.log(thisSearch.dom.inputElement);
 
     thisSearch.dom.searchButton.addEventListener('click', (event) =>
       thisSearch.handleSearchClick(event)
     );
   }
   handleSearchClick(event) {
+    console.log(event);
+    console.log('clicked');
     event.preventDefault();
     const thisSearch = this;
 
@@ -42,24 +47,43 @@ class Search {
         return rawResponse.json();
       })
       .then(function (parsedResponse) {
-        //console.log('parsedResponse:', parsedResponse);
-
-        // save parsedResponse as a thisApp.data.songs
-
         thisSearch.data = parsedResponse;
-
-        //console.log(thisSearch.data.searchedSongs);
 
         thisSearch.updateDOM();
       });
+
+    /*let urls = {
+      songsTitle:
+        settings.db.url + '/' + settings.db.songsTitle + '?q=' + inputText,
+      authorsName:
+        settings.db.url + '/' + settings.db.authorsName + '?q=' + inputText,
+    };*/
+
+    /*let urlSearchedSongs =
+      settings.db.url + '/' + settings.db.songs + '?q=' + inputText;*/
+
+    /*Promise.all([fetch(urls.songsTitle), fetch(urls.authorsName)])
+
+      .then(function (allResponses) {
+        const titleResponse = allResponses[0];
+        const authorResponse = allResponses[1];
+        return Promise.all([titleResponse.json(), authorResponse.json()]);
+      })
+      .then(function ([titleResponse, authorResponse]) {
+        thisSearch.data = [titleResponse, authorResponse];
+
+        thisSearch.updateDOM();
+      });*/
   }
 
   updateDOM() {
     const thisSearch = this;
 
     const searchedSongs = thisSearch.data;
+    console.log(searchedSongs.length);
 
     thisSearch.dom.songWrapper.innerHTML = [];
+    thisSearch.dom.foundText.innerHTML = [];
 
     for (let song of searchedSongs) {
       const songId = song.id;
@@ -89,6 +113,22 @@ class Search {
       thisSearch.dom.songWrapper.innerHTML += generatedHTML;
       //console.log(thisSearch.dom.songWrapper.innerHTML);
     }
+
+    // 'we have found' text
+    const songsNumber = searchedSongs.length;
+    let songsNumberText = songsNumber + ' songs';
+    if (songsNumber == 1) {
+      songsNumberText = songsNumber + ' song';
+    }
+
+    let songsNumberData = { songsNumberText };
+
+    const numberSongsHTML = templates.songNumber(songsNumberData);
+    console.log(numberSongsHTML);
+
+    //
+    thisSearch.dom.foundText.innerHTML += numberSongsHTML;
+    console.log(thisSearch.dom.foundText.innerHTML);
 
     GreenAudioPlayer.init({
       selector: '.player', // inits Green Audio Player on each audio container that has class "player"
