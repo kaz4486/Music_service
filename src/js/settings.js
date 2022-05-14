@@ -27,7 +27,8 @@ export const select = {
   },
   search: {
     button: '.search-button',
-    input: '.song-search',
+    input: '.song-searcher',
+    searchedSongs: '.songs-searched',
   },
 };
 

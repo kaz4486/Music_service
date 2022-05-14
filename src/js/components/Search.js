@@ -6,11 +6,33 @@ class Search {
 
     thisSearch.initWidget(element, authors);
   }
-
-  initData(inputText, element, authors) {
+  initWidget(element, authors) {
     const thisSearch = this;
 
-    thisSearch.data = {};
+    thisSearch.authors = authors;
+    thisSearch.data = [];
+
+    thisSearch.dom = {};
+    thisSearch.dom.wrapper = element;
+    thisSearch.dom.songWrapper = element.querySelector(
+      select.search.searchedSongs
+    );
+
+    thisSearch.dom.searchButton = element.querySelector(select.search.button);
+    //console.log(thisSearch.dom.searchButton);
+
+    thisSearch.dom.inputElement = document.querySelector(select.search.input);
+    console.log(thisSearch.dom.inputElement);
+
+    thisSearch.dom.searchButton.addEventListener('click', (event) =>
+      thisSearch.handleSearchClick(event)
+    );
+  }
+  handleSearchClick(event) {
+    event.preventDefault();
+    const thisSearch = this;
+
+    const inputText = thisSearch.dom.inputElement.value;
 
     let urlSearchedSongs =
       settings.db.url + '/' + settings.db.songs + '?q=' + inputText;
@@ -23,47 +45,21 @@ class Search {
         //console.log('parsedResponse:', parsedResponse);
 
         // save parsedResponse as a thisApp.data.songs
-        thisSearch.data.searchedSongs = parsedResponse;
+
+        thisSearch.data = parsedResponse;
+
         //console.log(thisSearch.data.searchedSongs);
 
-        thisSearch.updateDOM(thisSearch.data.searchedSongs, element, authors);
+        thisSearch.updateDOM();
       });
   }
 
-  initWidget(element, authors) {
+  updateDOM() {
     const thisSearch = this;
 
-    thisSearch.dom = {};
-    thisSearch.dom.wrapper = element;
+    const searchedSongs = thisSearch.data;
 
-    thisSearch.dom.searchButton = element.querySelector(select.search.button);
-    //console.log(thisSearch.dom.searchButton);
-
-    const inputElement = document.querySelector(select.search.input);
-    console.log(inputElement);
-
-    thisSearch.dom.searchButton.addEventListener('click', function (event) {
-      console.log('clicked');
-      event.preventDefault();
-
-      const inputText = inputElement.value;
-      console.log(inputText);
-      thisSearch.initData(inputText, element, authors);
-    });
-  }
-
-  updateDOM(searchedSongs, element, authors) {
-    console.log(searchedSongs);
-    const thisSearch = this;
-
-    thisSearch.dom = {};
-
-    //thisSearch.dom.wrapper = element;
-
-    thisSearch.dom.songWrapper = element;
-
-    console.log(thisSearch.dom.songWrapper);
-    console.log(element);
+    thisSearch.dom.songWrapper.innerHTML = [];
 
     for (let song of searchedSongs) {
       const songId = song.id;
@@ -73,7 +69,7 @@ class Search {
       const songRanking = song.ranking;
       const songFileName = song.filename;
 
-      const songAuthor = authors.find(
+      const songAuthor = thisSearch.authors.find(
         (author) => author.id === song.author
       ).fullName;
 
@@ -91,7 +87,7 @@ class Search {
       const generatedHTML = templates.player(songData);
 
       thisSearch.dom.songWrapper.innerHTML += generatedHTML;
-      console.log(thisSearch.dom.songWrapper.innerHTML);
+      //console.log(thisSearch.dom.songWrapper.innerHTML);
     }
 
     GreenAudioPlayer.init({

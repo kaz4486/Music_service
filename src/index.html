@@ -97,15 +97,15 @@
           <label for="song-search">search</label>
           <div class="row">
             <h1>name</h1>
-            <input type="search" class="song-search" name="q" />
+            <input type="search" class="song-searcher" name="q" />
             <button class="search-button" type="button">search</button>
           </div>
 
           <!--player-->
 
-          <div class="songs-box container">
+          <div class="songs-searched container">
             <script class="template-player" type="text/x-handlebars-template">
-              <div class='song container'>
+              <div class='songs-box container'>
                 <h3 class='song-name'>{{songTitle}} - {{songAuthor}}</h3>
                 <div class='player'>
                   <audio>
