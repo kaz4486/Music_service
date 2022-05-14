@@ -15,6 +15,7 @@ export const select = {
     pages: '.pages',
     navLinks: '.nav',
     searchBox: '.search-box',
+    discoverBox: '.discover-box',
   },
   templateOf: {
     player: '.template-player',
@@ -31,6 +32,9 @@ export const select = {
     input: '.song-searcher',
     searchedSongs: '.songs-searched',
     foundText: '.found-text',
+  },
+  discover: {
+    songDiscovered: '.song-discovered',
   },
 };
 

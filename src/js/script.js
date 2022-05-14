@@ -1,6 +1,7 @@
 import { settings, select } from './settings.js';
 import Home from './components/Home.js';
 import Search from './components/Search.js';
+import Discover from './components/Discover.js';
 
 const app = {
   initPages: function () {
@@ -94,6 +95,7 @@ const app = {
         // execute initHome method
         thisApp.initHome(thisApp.data.songs, thisApp.data.authors);
         thisApp.initSearch(thisApp.data.authors);
+        thisApp.initDiscover();
       });
 
     console.log('thisApp.data', JSON.stringify(thisApp.data));
@@ -123,6 +125,15 @@ const app = {
 
     /*const songContainer = document.querySelector(select.containerOf.songBox);
     thisApp.search = new Search(songContainer, authors);*/
+  },
+  initDiscover() {
+    const thisApp = this;
+
+    const discoverContainer = document.querySelector(
+      select.containerOf.discoverBox
+    );
+
+    thisApp.discover = new Discover(discoverContainer);
   },
 };
 
