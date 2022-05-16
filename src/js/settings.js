@@ -18,7 +18,9 @@ export const select = {
     discoverBox: '.discover-box',
   },
   templateOf: {
-    player: '.template-player',
+    playerHome: '.template-player_home',
+    playerSearch: '.template-player_search',
+    playerDiscover: '.template-player_discover',
     songNumber: '.template-song_number',
   },
   home: {
@@ -35,12 +37,19 @@ export const select = {
   },
   discover: {
     songDiscovered: '.song-discovered',
+    player: '.player-discover',
   },
 };
 
 export const templates = {
-  player: Handlebars.compile(
-    document.querySelector(select.templateOf.player).innerHTML
+  playerHome: Handlebars.compile(
+    document.querySelector(select.templateOf.playerHome).innerHTML
+  ),
+  playerSearch: Handlebars.compile(
+    document.querySelector(select.templateOf.playerSearch).innerHTML
+  ),
+  playerDiscover: Handlebars.compile(
+    document.querySelector(select.templateOf.playerDiscover).innerHTML
   ),
   songNumber: Handlebars.compile(
     document.querySelector(select.templateOf.songNumber).innerHTML

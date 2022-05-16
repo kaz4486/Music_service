@@ -69,8 +69,6 @@ const app = {
         return rawResponse.json();
       })
       .then(function (parsedResponse) {
-        console.log('parsedResponse:', parsedResponse);
-
         // save parsedResponse as a thisApp.data.songs
         thisApp.data.songs = parsedResponse;
 
@@ -85,8 +83,6 @@ const app = {
         return rawResponse.json();
       })
       .then(function (parsedResponse) {
-        console.log('parsedResponse:', parsedResponse);
-
         // save parsedResponse as a thisApp.data.songs
         thisApp.data.authors = parsedResponse;
 
@@ -95,7 +91,7 @@ const app = {
         // execute initHome method
         thisApp.initHome(thisApp.data.songs, thisApp.data.authors);
         thisApp.initSearch(thisApp.data.authors);
-        thisApp.initDiscover();
+        thisApp.initDiscover(thisApp.data.songs, thisApp.data.authors);
       });
 
     console.log('thisApp.data', JSON.stringify(thisApp.data));
@@ -126,14 +122,14 @@ const app = {
     /*const songContainer = document.querySelector(select.containerOf.songBox);
     thisApp.search = new Search(songContainer, authors);*/
   },
-  initDiscover() {
+  initDiscover(songs, authors) {
     const thisApp = this;
 
     const discoverContainer = document.querySelector(
       select.containerOf.discoverBox
     );
 
-    thisApp.discover = new Discover(discoverContainer);
+    thisApp.discover = new Discover(discoverContainer, songs, authors);
   },
 };
 

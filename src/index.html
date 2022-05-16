@@ -44,9 +44,12 @@
       <section id="home">
         <div class="section-home container">
           <div class="songs-box container">
-            <script class="template-player" type="text/x-handlebars-template">
+            <script
+              class="template-player_home"
+              type="text/x-handlebars-template"
+            >
               <div class='song container'>
-                <h3 class='song-name'>{{songTitle}} - {{songAuthor}}</h3>
+                <h3 class='song-name'>{{songAuthor}} - {{songTitle}}</h3>
                 <div class='player'>
                   <audio>
                     <source src='./audio/{{songFileName}}' type='audio/mpeg' />
@@ -103,7 +106,7 @@
               type="text/x-handlebars-template"
             >
               <div class='text'>
-                <h3>We have found {{songsNumberText}}</h3>
+                <h3>We have found {{songsNumberText}}...</h3>
               </div>
             </script>
           </div>
@@ -111,10 +114,13 @@
           <!--player-->
 
           <div class="songs-searched container">
-            <script class="template-player" type="text/x-handlebars-template">
+            <script
+              class="template-player_search"
+              type="text/x-handlebars-template"
+            >
               <div class='songs-box container'>
-                <h3 class='song-name'>{{songTitle}} - {{songAuthor}}</h3>
-                <div class='player'>
+                <h3 class='song-name'>{{songAuthor}} - {{songTitle}}</h3>
+                <div class='player-search'>
                   <audio>
                     <source src='./audio/{{songFileName}}' type='audio/mpeg' />
                   </audio>
@@ -133,14 +139,18 @@
         <div class="discover-box container">
           <div class="title">
             <h1>Discover</h1>
+            <h2>Give it a try!</h2>
           </div>
 
           <!--player-->
 
           <div class="song-discovered container">
-            <script class="template-player" type="text/x-handlebars-template">
-              <div class='song container'>
-                <h3 class='song-name'>{{songTitle}} - {{songAuthor}}</h3>
+            <script
+              class="template-player_discover"
+              type="text/x-handlebars-template"
+            >
+              <div class='songs-box container'>
+                <h3 class='song-name'>{{songAuthor}} - {{songTitle}}</h3>
                 <div class='player'>
                   <audio>
                     <source src='./audio/{{songFileName}}' type='audio/mpeg' />

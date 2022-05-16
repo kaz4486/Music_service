@@ -19,7 +19,7 @@ class Search {
     );
 
     thisSearch.dom.foundText = element.querySelector(select.search.foundText);
-    console.log(thisSearch.dom.foundText);
+    //console.log(thisSearch.dom.foundText);
 
     thisSearch.dom.searchButton = element.querySelector(select.search.button);
     //console.log(thisSearch.dom.searchButton);
@@ -80,7 +80,7 @@ class Search {
     const thisSearch = this;
 
     const searchedSongs = thisSearch.data;
-    console.log(searchedSongs.length);
+    //console.log(searchedSongs.length);
 
     thisSearch.dom.songWrapper.innerHTML = [];
     thisSearch.dom.foundText.innerHTML = [];
@@ -93,9 +93,11 @@ class Search {
       const songRanking = song.ranking;
       const songFileName = song.filename;
 
-      const songAuthor = thisSearch.authors.find(
+      const songAuthorLow = thisSearch.authors.find(
         (author) => author.id === song.author
       ).fullName;
+
+      const songAuthor = songAuthorLow.toUpperCase();
 
       console.log(songAuthor);
 
@@ -108,7 +110,7 @@ class Search {
         songFileName,
       };
       //console.log(songData);
-      const generatedHTML = templates.player(songData);
+      const generatedHTML = templates.playerSearch(songData);
 
       thisSearch.dom.songWrapper.innerHTML += generatedHTML;
       //console.log(thisSearch.dom.songWrapper.innerHTML);
@@ -124,14 +126,12 @@ class Search {
     let songsNumberData = { songsNumberText };
 
     const numberSongsHTML = templates.songNumber(songsNumberData);
-    console.log(numberSongsHTML);
 
-    //
     thisSearch.dom.foundText.innerHTML += numberSongsHTML;
-    console.log(thisSearch.dom.foundText.innerHTML);
 
+    // eslint-disable-next-line no-undef
     GreenAudioPlayer.init({
-      selector: '.player', // inits Green Audio Player on each audio container that has class "player"
+      selector: '.player-search', // inits Green Audio Player on each audio container that has class "player"
       stopOthersOnPlay: true,
     });
   }

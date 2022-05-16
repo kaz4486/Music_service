@@ -38,9 +38,11 @@ class Home {
         .replace('.mp3', '');*/
 
       //const songAuthor = nameSongAndAuthor.replace(songTitle, '').trim();
-      const songAuthor = authors.find(
+      const songAuthorLow = authors.find(
         (author) => author.id === song.author
       ).fullName;
+
+      const songAuthor = songAuthorLow.toUpperCase();
 
       //console.log(songAuthor);
 
@@ -53,17 +55,16 @@ class Home {
         songFileName,
       };
       console.log(songData);
-      const generatedHTML = templates.player(songData);
+      const generatedHTML = templates.playerHome(songData);
 
       thisHome.dom.songWrapper.innerHTML += generatedHTML;
       //console.log(thisHome.dom.songWrapper.innerHTML);
+      // eslint-disable-next-line no-undef
+      GreenAudioPlayer.init({
+        selector: 'player', // inits Green Audio Player on each audio container that has class "player"
+        stopOthersOnPlay: true,
+      });
     }
-
-    // eslint-disable-next-line no-undef
-    GreenAudioPlayer.init({
-      selector: '.player', // inits Green Audio Player on each audio container that has class "player"
-      stopOthersOnPlay: true,
-    });
   }
 
   initPages(pageId) {

@@ -1,9 +1,10 @@
+/* eslint-disable no-undef */
 class Player {
-  constructor(element, songs) {
+  constructor(element) {
     const thisPlayer = this;
 
-    thisPlayer.render(element, songs);
-    thisPlayer.initPlugin(element);
+    thisPlayer.render(element);
+    thisPlayer.initPlugin();
   }
 
   render(element) {

@@ -10,7 +10,7 @@
   background-position: center;
   background-size: cover;
   position: relative;
-  box-shadow: inset 0px -160px 152px -6px rgba(19, 19, 19, 1);
+  box-shadow: inset 0px -147px 92px 9px rgba(19, 19, 19, 1);
 }
 
 .titles-box {
@@ -55,7 +55,7 @@ header h2 {
   justify-content: center;
 
   a {
-    margin: 100px 40px;
+    margin: 70px 40px 40px;
     text-decoration: none;
     font-family: $font-text;
     font-weight: $font-semibold;
@@ -80,5 +80,36 @@ header h2 {
 
   section.active {
     display: block;
+  }
+}
+
+/* players */
+
+.songs-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 60px;
+
+  .song {
+    margin: 30px;
+    justify-content: center;
+  }
+  h3 {
+    text-align: center;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+  }
+  .song-description {
+    min-width: 385px;
+    justify-content: space-between;
+  }
+}
+
+.green-audio-player .slider .gap-progress {
+  background-color: $color-main;
+  .pin {
+    background-color: $color-main;
   }
 }

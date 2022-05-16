@@ -1,5 +1,6 @@
 .search-box {
   text-align: center;
+  min-height: 50vh;
 
   label {
     font-family: $font-text;
@@ -40,4 +41,10 @@
     font-size: 15px;
     font-weight: $font-semibold;
   }
+}
+
+.text {
+  letter-spacing: 4px;
+  margin: 50px;
+  font-size: 15px;
 }

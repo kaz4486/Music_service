@@ -1,0 +1,18 @@
+.discover-box {
+  text-align: center;
+  min-height: 50vh;
+
+  h1 {
+    font-family: $font-text;
+    letter-spacing: 7px;
+    color: $color-subtitles;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: $font-semibold;
+  }
+  h2 {
+    font-weight: $font-semibold;
+    letter-spacing: 3px;
+    margin: 40px;
+  }
+}
