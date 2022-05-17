@@ -64,7 +64,25 @@ const app = {
     //const fetchPromise1 = fetch(urlSongs);
     //const fetchPromise2 = fetch(urlAuthors);
 
-    fetch(urlSongs)
+    Promise.all([fetch(urlSongs), fetch(urlAuthors)])
+
+      .then(function (allResponses) {
+        const songsResponse = allResponses[0];
+        const authorResponse = allResponses[1];
+        return Promise.all([songsResponse.json(), authorResponse.json()]);
+      })
+      .then(function ([songsResponse, authorResponse]) {
+        thisApp.data = [songsResponse, authorResponse];
+        console.log(thisApp.data);
+
+        thisApp.initHome(songsResponse, authorResponse);
+        thisApp.initSearch(authorResponse);
+        thisApp.initDiscover(songsResponse, authorResponse);
+
+        //thisSearch.updateDOM();
+      });
+
+    /*fetch(urlSongs)
       .then(function (rawResponse) {
         return rawResponse.json();
       })
@@ -92,7 +110,7 @@ const app = {
         thisApp.initHome(thisApp.data.songs, thisApp.data.authors);
         thisApp.initSearch(thisApp.data.authors);
         thisApp.initDiscover(thisApp.data.songs, thisApp.data.authors);
-      });
+      });*/
 
     //console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
@@ -117,8 +135,8 @@ const app = {
     );
     thisApp.search = new Search(searchContainer, authors);
 
-    /*const songContainer = document.querySelector(select.containerOf.songBox);
-    thisApp.search = new Search(songContainer, authors);*/
+    //const songContainer = document.querySelector(select.containerOf.songBox);
+    //thisApp.search = new Search(songContainer, authors);
   },
   initDiscover(songs, authors) {
     const thisApp = this;
