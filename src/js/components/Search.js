@@ -32,8 +32,6 @@ class Search {
     );
   }
   handleSearchClick(event) {
-    console.log(event);
-    console.log('clicked');
     event.preventDefault();
     const thisSearch = this;
 
@@ -47,7 +45,20 @@ class Search {
         return rawResponse.json();
       })
       .then(function (parsedResponse) {
-        thisSearch.data = parsedResponse;
+        thisSearch.data = parsedResponse
+          .map((song) => ({
+            ...song,
+            authorFullName: thisSearch.authors.find(
+              (author) => author.id === song.author
+            ).fullName,
+          }))
+          .filter(
+            (song) =>
+              song.title.toLowerCase().includes(inputText.toLowerCase()) ||
+              song.authorFullName
+                .toLowerCase()
+                .includes(inputText.toLowerCase())
+          );
 
         thisSearch.updateDOM();
       });
@@ -87,7 +98,7 @@ class Search {
 
     for (let song of searchedSongs) {
       const songId = song.id;
-      console.log(songId);
+
       const songTitle = song.title;
       const songCategories = song.categories;
       const songRanking = song.ranking;
@@ -98,8 +109,6 @@ class Search {
       ).fullName;
 
       const songAuthor = songAuthorLow.toUpperCase();
-
-      console.log(songAuthor);
 
       let songData = {
         songId,

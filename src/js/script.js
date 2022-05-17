@@ -94,12 +94,10 @@ const app = {
         thisApp.initDiscover(thisApp.data.songs, thisApp.data.authors);
       });
 
-    console.log('thisApp.data', JSON.stringify(thisApp.data));
+    //console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
   init: function () {
     const thisApp = this;
-    console.log('*** App starting ***');
-    console.log('thisApp:', thisApp);
 
     thisApp.initPages();
     thisApp.initData();

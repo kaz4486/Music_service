@@ -44,8 +44,6 @@ class Home {
 
       const songAuthor = songAuthorLow.toUpperCase();
 
-      //console.log(songAuthor);
-
       const songData = {
         songId,
         songTitle,
@@ -54,11 +52,9 @@ class Home {
         songRanking,
         songFileName,
       };
-      console.log(songData);
       const generatedHTML = templates.playerHome(songData);
 
       thisHome.dom.songWrapper.innerHTML += generatedHTML;
-      //console.log(thisHome.dom.songWrapper.innerHTML);
       // eslint-disable-next-line no-undef
       GreenAudioPlayer.init({
         selector: 'player', // inits Green Audio Player on each audio container that has class "player"

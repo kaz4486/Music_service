@@ -24,12 +24,10 @@ class Discover {
     // drawing song
 
     const discoverSongId = Math.floor(Math.random() * 4) + 1;
-    console.log(discoverSongId);
 
     for (let song of thisDiscover.songs) {
       if (song.id === discoverSongId) {
         const songId = song.id;
-        console.log(songId);
         const songTitle = song.title;
         const songCategories = song.categories;
         const songRanking = song.ranking;
@@ -40,8 +38,6 @@ class Discover {
         ).fullName;
 
         const songAuthor = songAuthorLow.toUpperCase();
-
-        console.log(songAuthor);
 
         let songData = {
           songId,
@@ -54,7 +50,6 @@ class Discover {
         const generatedHTML = templates.playerDiscover(songData);
 
         thisDiscover.dom.songDiscovered.innerHTML += generatedHTML;
-        console.log(thisDiscover.dom.songDiscovered.innerHTML);
 
         /*thisDiscover.dom.player = document.querySelector(
           select.discover.player
