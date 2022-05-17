@@ -73,7 +73,7 @@ const app = {
       })
       .then(function ([songsResponse, authorResponse]) {
         thisApp.data = [songsResponse, authorResponse];
-        console.log(thisApp.data);
+        //console.log(thisApp.data);
 
         thisApp.initHome(songsResponse, authorResponse);
         thisApp.initSearch(authorResponse);
